@@ -1,0 +1,13 @@
+name: K-Mean-Clustering-for-Hotspot-Dataset-Riau
+title: K-Mean-Clustering-for-Hotspot-Dataset-Riau
+username:
+account: hadimaster65555
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 389202
+bundleId: 1503104
+url: https://hadimaster65555.shinyapps.io/K-Mean-Clustering-for-Hotspot-Dataset-Riau/
+when: 1532674001.88681
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: LICENSE|README.md

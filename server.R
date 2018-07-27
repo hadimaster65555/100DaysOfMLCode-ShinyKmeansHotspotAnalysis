@@ -15,14 +15,32 @@ library(ggplot2)
 library(cluster)
 library(stats)
 library(factoextra)
+library(RCurl)
 
 # Define server logic
 shinyServer(function(input, output) {
    
-  # Taking dataset
+  # Taking dataset from internet
   allData <- reactive({
-    setwd("E://Kerjaan/Kerjaan Statistik/DBSCAN/dbscan-web-app/") # Set this based on your file location in your drive
-    read.csv2(file = "Data-Riau.csv")
+    repeat {
+      result <- tryCatch({
+        peringatan = ""
+        download = getURL("https://raw.githubusercontent.com/hadimaster65555/100DaysOfMLCode-ShinyKmeansHotspotAnalysis/master/Data-Riau.csv")
+        df = read.csv2(text = download)
+      }, warning = function(w) {
+        peringatan = "warning"
+        print(peringatan)
+      }, error = function(e) {
+        peringatan = "error"
+        print(peringatan)
+      })
+      if (result != "warning" && result != "error") {
+        print("File successfully loaded")
+        break
+      }
+    }
+    print(result)
+    result
   })
   
   selectedDataSet <- reactive({
